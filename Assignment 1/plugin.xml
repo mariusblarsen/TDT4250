@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated a1 -->
+      <package
+            uri="platform:/plugin/tdt4250.assignment_1/model/a1.ecore"
+            class="tdt4250.a1.A1Package"
+            genModel="model/a1.genmodel"/>
+   </extension>
+
+</plugin>
