@@ -173,28 +173,21 @@ public class A1Validator extends EObjectValidator {
 	 * Validates the needsEnoughCredits constraint of '<em>Course Combination</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	public boolean validateCourseCombination_needsEnoughCredits(CourseCombination courseCombination, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		if (false) {
-			if (diagnostics != null) {
-				diagnostics.add
-					(createDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 "_UI_GenericConstraint_diagnostic",
-						 new Object[] { "needsEnoughCredits", getObjectLabel(courseCombination, context) },
-						 new Object[] { courseCombination },
-						 context));
-			}
-			return false;
+		float sumCredits = 0.0f;
+		for (Course course : courseCombination.getCourses()) {
+			sumCredits += course.getCredits();
 		}
-		return true;
+		if (sumCredits >= 30) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
