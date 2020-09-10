@@ -11,33 +11,38 @@
   <eClassifiers xsi:type="ecore:EClass" name="Programme">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="years" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="semesters" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="programmeSemester" upperBound="-1"
         eType="#//Semester" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="specialisations" upperBound="-1"
-        eType="#//Specialisation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specialisation" eType="#//Specialisation"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Semester">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="courses" lowerBound="1"
-        upperBound="-1" eType="#//Course"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="courseAllocations" upperBound="-1"
-        eType="#//CourseAllocation" containment="true" eOpposite="#//CourseAllocation/semester"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="courseCombination" lowerBound="1"
+        eType="#//CourseCombination" containment="true" eOpposite="#//CourseCombination/semester"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Specialisation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="semesterChosen" eType="#//Semester"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Student">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="programme" eType="#//Programme"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="studentID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CourseCombination">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="courses" lowerBound="1"
+        upperBound="-1" eType="#//Course"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semester" eType="#//Semester"
+        eOpposite="#//Semester/courseCombination"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Department">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="programmes" upperBound="-1"
-        eType="#//Programme" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="students" upperBound="-1"
+        eType="#//Student" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="courses" upperBound="-1"
         eType="#//Course" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CourseAllocation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="course" eType="#//Course"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="semester" eType="#//Semester"
-        eOpposite="#//Semester/courseAllocations"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="programmes" upperBound="-1"
+        eType="#//Programme" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
