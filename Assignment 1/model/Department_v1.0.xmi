@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a1:Department
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:a1="platform:/plugin/tdt4250.assignment_1/model/a1.ecore"
+    xsi:schemaLocation="platform:/plugin/tdt4250.assignment_1/model/a1.ecore a1.ecore">
+  <students
+      programme="//@programmes.0"
+      studentID="2"/>
+  <students
+      programme="//@programmes.1"
+      studentID="1"/>
+  <students
+      programme="//@programmes.1"
+      studentID="3"/>
+  <courses code="TDT4290"
+      name="TDT4290"
+      credits="15.0"/>
+  <courses code="TDT4250"
+      name="TDT4250"
+      credits="7.5"/>
+  <programmes
+      years="2"
+      name="MIDT">
+    <programmeSemester
+        number="5">
+      <courseCombination
+          courses="//@courses.0 //@courses.1"/>
+    </programmeSemester>
+    <specialisation
+        name="Software development"
+        semesterChosen="//@programmes.0/@programmeSemester.0"/>
+  </programmes>
+  <programmes
+      years="5"
+      name="MDTD">
+    <programmeSemester
+        number="1">
+      <courseCombination
+          courses="//@courses.0 //@courses.1"/>
+    </programmeSemester>
+    <specialisation
+        name="SQL"
+        semesterChosen="//@programmes.1/@programmeSemester.0"/>
+  </programmes>
+</a1:Department>
