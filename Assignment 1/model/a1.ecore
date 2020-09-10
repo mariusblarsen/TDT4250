@@ -21,10 +21,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="courses" lowerBound="1"
         upperBound="-1" eType="#//Course"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="courseAllocations" upperBound="-1"
-        eType="#//CourseAllocation" containment="true"/>
+        eType="#//CourseAllocation" containment="true" eOpposite="#//CourseAllocation/semester"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Specialisation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semesterChosen" eType="#//Semester"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Department">
     <eStructuralFeatures xsi:type="ecore:EReference" name="programmes" upperBound="-1"
@@ -36,6 +37,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CourseAllocation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="course" eType="#//Course"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="semester" eType="#//Semester"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semester" eType="#//Semester"
+        eOpposite="#//Semester/courseAllocations"/>
   </eClassifiers>
 </ecore:EPackage>
