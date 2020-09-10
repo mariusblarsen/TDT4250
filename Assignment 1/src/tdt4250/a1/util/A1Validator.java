@@ -184,8 +184,19 @@ public class A1Validator extends EObjectValidator {
 		for (Course course : courseCombination.getCourses()) {
 			sumCredits += course.getCredits();
 		}
-		if (sumCredits >= 30) {
-			return true;
+		if (sumCredits >= 30.0f) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "needsEnoughCredits", getObjectLabel(courseCombination, context) },
+						 new Object[] { courseCombination },
+						 context));
+				return true;
+			} 
 		}
 		return false;
 	}
