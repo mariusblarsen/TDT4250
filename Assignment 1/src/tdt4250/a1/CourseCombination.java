@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see tdt4250.a1.A1Package#getCourseCombination()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='needsEnoughCredits'"
  * @generated
  */
 public interface CourseCombination extends EObject {

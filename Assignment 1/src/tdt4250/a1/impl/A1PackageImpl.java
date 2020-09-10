@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import tdt4250.a1.A1Factory;
@@ -18,6 +19,7 @@ import tdt4250.a1.Programme;
 import tdt4250.a1.Semester;
 import tdt4250.a1.Specialisation;
 import tdt4250.a1.Student;
+import tdt4250.a1.util.A1Validator;
 
 /**
  * <!-- begin-user-doc -->
@@ -127,6 +129,16 @@ public class A1PackageImpl extends EPackageImpl implements A1Package {
 
 		// Initialize created meta-data
 		theA1Package.initializePackageContents();
+
+		// Register package validator
+		EValidator.Registry.INSTANCE.put
+			(theA1Package,
+			 new EValidator.Descriptor() {
+				 @Override
+				 public EValidator getEValidator() {
+					 return A1Validator.INSTANCE;
+				 }
+			 });
 
 		// Mark meta-data to indicate it can't be changed
 		theA1Package.freeze();
@@ -548,6 +560,26 @@ public class A1PackageImpl extends EPackageImpl implements A1Package {
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// http://www.eclipse.org/emf/2002/Ecore
+		createEcoreAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/Ecore</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createEcoreAnnotations() {
+		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		addAnnotation
+		  (courseCombinationEClass,
+		   source,
+		   new String[] {
+			   "constraints", "needsEnoughCredits"
+		   });
 	}
 
 } //A1PackageImpl
