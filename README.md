@@ -2,8 +2,6 @@
 
 Repository for the course TDT4250 - Advanced Software Design at NTNU.
 
-[TOC]
-
 
 
 # Assignment 1
@@ -34,9 +32,8 @@ Repository for the course TDT4250 - Advanced Software Design at NTNU.
 
 ### Manually written constraints
 
-**`validateCourseCombination_needsEnoughCredits()`** 
-
-Implemented in `src > tdt4250.a1.util > A1Validator.java` to validate that each semester has a combination of courses that sums up to at least 30.0 credits.
+* `validateCourseCombination_needsEnoughCredits()`
+  * Implemented in `src > tdt4250.a1.util > A1Validator.java` to validate that each semester has a combination of courses that sums up to at least 30.0 credits.
 
 
 
