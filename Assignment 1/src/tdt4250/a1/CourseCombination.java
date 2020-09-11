@@ -30,22 +30,11 @@ public interface CourseCombination extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Credits</em>' attribute.
-	 * @see #setCredits(float)
 	 * @see tdt4250.a1.A1Package#getCourseCombination_Credits()
-	 * @model
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
 	float getCredits();
-
-	/**
-	 * Sets the value of the '{@link tdt4250.a1.CourseCombination#getCredits <em>Credits</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Credits</em>' attribute.
-	 * @see #getCredits()
-	 * @generated
-	 */
-	void setCredits(float value);
 
 	/**
 	 * Returns the value of the '<em><b>Courses</b></em>' reference list.

@@ -180,11 +180,7 @@ public class A1Validator extends EObjectValidator {
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
-		float sumCredits = 0.0f;
-		for (Course course : courseCombination.getCourses()) {
-			sumCredits += course.getCredits();
-		}
-		if (sumCredits >= 30.0f) {
+		if (courseCombination.getCredits() < 30.0f) {
 			if (diagnostics != null) {
 				diagnostics.add
 					(createDiagnostic
