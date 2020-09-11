@@ -50,16 +50,6 @@ public class CourseCombinationImpl extends MinimalEObjectImpl.Container implemen
 	protected static final float CREDITS_EDEFAULT = 0.0F;
 
 	/**
-	 * The cached value of the '{@link #getCredits() <em>Credits</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCredits()
-	 * @generated
-	 * @ordered
-	 */
-	protected float credits = CREDITS_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getCourses() <em>Courses</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -91,24 +81,16 @@ public class CourseCombinationImpl extends MinimalEObjectImpl.Container implemen
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public float getCredits() {
+		// Sums and returns all credits for related courses.
+		float credits = 0.0f;
+		for (Course course : this.getCourses()) {
+			credits += course.getCredits();
+		}
 		return credits;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCredits(float newCredits) {
-		float oldCredits = credits;
-		credits = newCredits;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, A1Package.COURSE_COMBINATION__CREDITS, oldCredits, credits));
 	}
 
 	/**
@@ -238,9 +220,6 @@ public class CourseCombinationImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case A1Package.COURSE_COMBINATION__CREDITS:
-				setCredits((Float)newValue);
-				return;
 			case A1Package.COURSE_COMBINATION__COURSES:
 				getCourses().clear();
 				getCourses().addAll((Collection<? extends Course>)newValue);
@@ -260,9 +239,6 @@ public class CourseCombinationImpl extends MinimalEObjectImpl.Container implemen
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case A1Package.COURSE_COMBINATION__CREDITS:
-				setCredits(CREDITS_EDEFAULT);
-				return;
 			case A1Package.COURSE_COMBINATION__COURSES:
 				getCourses().clear();
 				return;
@@ -282,29 +258,13 @@ public class CourseCombinationImpl extends MinimalEObjectImpl.Container implemen
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 			case A1Package.COURSE_COMBINATION__CREDITS:
-				return credits != CREDITS_EDEFAULT;
+				return getCredits() != CREDITS_EDEFAULT;
 			case A1Package.COURSE_COMBINATION__COURSES:
 				return courses != null && !courses.isEmpty();
 			case A1Package.COURSE_COMBINATION__SEMESTER:
 				return getSemester() != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (credits: ");
-		result.append(credits);
-		result.append(')');
-		return result.toString();
 	}
 
 } //CourseCombinationImpl
