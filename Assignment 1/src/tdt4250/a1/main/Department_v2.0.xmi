@@ -7,16 +7,16 @@
     xsi:schemaLocation="platform:/plugin/tdt4250.assignment_1/model/a1.ecore ../../../../model/a1.ecore"
     name="IDI">
   <students
-      programme="//@programmes.1"
+      programme="//@programmes.0"
       studentID="123">
     <semesters
-        number="1">
+        number="7"
+        specialiseIn="//@programmes.0/@specialisations.0">
       <courseCombination
-          courses="//@courses.0 //@courses.2"/>
+          courses="//@courses.0 //@courses.2 //@courses.1"/>
     </semesters>
     <semesters
-        number="2"
-        specialiseIn="//@programmes.0/@specialisations.0">
+        number="2">
       <courseCombination
           courses="//@courses.1"/>
     </semesters>
@@ -37,10 +37,13 @@
     </semesters>
   </students>
   <courses name="TDT4250"
+      level="3"
       credits="7.5"/>
   <courses name="TDT4290"
+      level="3"
       credits="15.0"/>
   <courses name="TDT4145"
+      level="3"
       credits="7.5"/>
   <programmes
       years="5"

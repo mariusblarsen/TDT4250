@@ -77,7 +77,7 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LEVEL_EDEFAULT = null;
+	protected static final int LEVEL_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getLevel() <em>Level</em>}' attribute.
@@ -87,7 +87,7 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	 * @generated
 	 * @ordered
 	 */
-	protected String level = LEVEL_EDEFAULT;
+	protected int level = LEVEL_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCredits() <em>Credits</em>}' attribute.
@@ -180,7 +180,7 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	 * @generated
 	 */
 	@Override
-	public String getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
@@ -190,8 +190,8 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 	 * @generated
 	 */
 	@Override
-	public void setLevel(String newLevel) {
-		String oldLevel = level;
+	public void setLevel(int newLevel) {
+		int oldLevel = level;
 		level = newLevel;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, A1Package.COURSE__LEVEL, oldLevel, level));
@@ -255,7 +255,7 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 				setName((String)newValue);
 				return;
 			case A1Package.COURSE__LEVEL:
-				setLevel((String)newValue);
+				setLevel((Integer)newValue);
 				return;
 			case A1Package.COURSE__CREDITS:
 				setCredits((Float)newValue);
@@ -301,7 +301,7 @@ public class CourseImpl extends MinimalEObjectImpl.Container implements Course {
 			case A1Package.COURSE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case A1Package.COURSE__LEVEL:
-				return LEVEL_EDEFAULT == null ? level != null : !LEVEL_EDEFAULT.equals(level);
+				return level != LEVEL_EDEFAULT;
 			case A1Package.COURSE__CREDITS:
 				return credits != CREDITS_EDEFAULT;
 		}
