@@ -11,10 +11,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import tdt4250.a1.A1Package;
 import tdt4250.a1.CourseCombination;
 import tdt4250.a1.Semester;
 import tdt4250.a1.Specialisation;
+import tdt4250.a1.Student;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,6 +29,7 @@ import tdt4250.a1.Specialisation;
  *   <li>{@link tdt4250.a1.impl.SemesterImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link tdt4250.a1.impl.SemesterImpl#getCourseCombination <em>Course Combination</em>}</li>
  *   <li>{@link tdt4250.a1.impl.SemesterImpl#getSpecialiseIn <em>Specialise In</em>}</li>
+ *   <li>{@link tdt4250.a1.impl.SemesterImpl#getStudent <em>Student</em>}</li>
  * </ul>
  *
  * @generated
@@ -205,12 +208,59 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 	 * @generated
 	 */
 	@Override
+	public Student getStudent() {
+		if (eContainerFeatureID() != A1Package.SEMESTER__STUDENT) return null;
+		return (Student)eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetStudent(Student newStudent, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newStudent, A1Package.SEMESTER__STUDENT, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setStudent(Student newStudent) {
+		if (newStudent != eInternalContainer() || (eContainerFeatureID() != A1Package.SEMESTER__STUDENT && newStudent != null)) {
+			if (EcoreUtil.isAncestor(this, newStudent))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newStudent != null)
+				msgs = ((InternalEObject)newStudent).eInverseAdd(this, A1Package.STUDENT__SEMESTERS, Student.class, msgs);
+			msgs = basicSetStudent(newStudent, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, A1Package.SEMESTER__STUDENT, newStudent, newStudent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case A1Package.SEMESTER__COURSE_COMBINATION:
 				if (courseCombination != null)
 					msgs = ((InternalEObject)courseCombination).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - A1Package.SEMESTER__COURSE_COMBINATION, null, msgs);
 				return basicSetCourseCombination((CourseCombination)otherEnd, msgs);
+			case A1Package.SEMESTER__STUDENT:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetStudent((Student)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -225,8 +275,24 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 		switch (featureID) {
 			case A1Package.SEMESTER__COURSE_COMBINATION:
 				return basicSetCourseCombination(null, msgs);
+			case A1Package.SEMESTER__STUDENT:
+				return basicSetStudent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+			case A1Package.SEMESTER__STUDENT:
+				return eInternalContainer().eInverseRemove(this, A1Package.STUDENT__SEMESTERS, Student.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -244,6 +310,8 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 			case A1Package.SEMESTER__SPECIALISE_IN:
 				if (resolve) return getSpecialiseIn();
 				return basicGetSpecialiseIn();
+			case A1Package.SEMESTER__STUDENT:
+				return getStudent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -264,6 +332,9 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 				return;
 			case A1Package.SEMESTER__SPECIALISE_IN:
 				setSpecialiseIn((Specialisation)newValue);
+				return;
+			case A1Package.SEMESTER__STUDENT:
+				setStudent((Student)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -286,6 +357,9 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 			case A1Package.SEMESTER__SPECIALISE_IN:
 				setSpecialiseIn((Specialisation)null);
 				return;
+			case A1Package.SEMESTER__STUDENT:
+				setStudent((Student)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,6 +378,8 @@ public class SemesterImpl extends MinimalEObjectImpl.Container implements Semest
 				return courseCombination != null;
 			case A1Package.SEMESTER__SPECIALISE_IN:
 				return specialiseIn != null;
+			case A1Package.SEMESTER__STUDENT:
+				return getStudent() != null;
 		}
 		return super.eIsSet(featureID);
 	}
