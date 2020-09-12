@@ -12,6 +12,12 @@ Repository for the course TDT4250 - Advanced Software Design at NTNU.
 
 ![A1_figure](/figures/A1_plantuml.png)
 
+Attributes and references as shown in figure above. Department functions as root, EOpposites are used between: 
+
+* `Semester` and `CourseCombination`
+
+* `Semester` and `Student`
+
 ### Derived features
 
 * `model > a1.ecore > CourseCombination.credits`
@@ -30,8 +36,10 @@ Repository for the course TDT4250 - Advanced Software Design at NTNU.
 
 * Class `Semester` 
   * Constraint `specialisationContainedInProgramme` to control specialisation is chosen from the students programme.
+  * AQL statement: `self.specialiseIn = null or self.specialiseIn.eContainer() = self.eContainer().programme`
 * Class `CourseCombination`
   * Constraint `needsEnoughCredits`, same functionality as `validateCourseCombination_needsEnoughCredits()`.
+  * AQL statement: `self.credits->sum() > 30.0`
 
 
 
