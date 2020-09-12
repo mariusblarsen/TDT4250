@@ -14,8 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import tdt4250.a1.A1Package;
@@ -169,9 +168,24 @@ public class StudentImpl extends MinimalEObjectImpl.Container implements Student
 	@Override
 	public EList<Semester> getSemesters() {
 		if (semesters == null) {
-			semesters = new EObjectContainmentEList<Semester>(Semester.class, this, A1Package.STUDENT__SEMESTERS);
+			semesters = new EObjectContainmentWithInverseEList<Semester>(Semester.class, this, A1Package.STUDENT__SEMESTERS, A1Package.SEMESTER__STUDENT);
 		}
 		return semesters;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case A1Package.STUDENT__SEMESTERS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSemesters()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

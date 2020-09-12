@@ -72,11 +72,13 @@ public interface Student extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Semesters</b></em>' containment reference list.
 	 * The list contents are of type {@link tdt4250.a1.Semester}.
+	 * It is bidirectional and its opposite is '{@link tdt4250.a1.Semester#getStudent <em>Student</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Semesters</em>' containment reference list.
 	 * @see tdt4250.a1.A1Package#getStudent_Semesters()
-	 * @model containment="true"
+	 * @see tdt4250.a1.Semester#getStudent
+	 * @model opposite="student" containment="true"
 	 * @generated
 	 */
 	EList<Semester> getSemesters();

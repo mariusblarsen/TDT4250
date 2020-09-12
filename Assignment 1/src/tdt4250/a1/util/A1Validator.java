@@ -129,7 +129,46 @@ public class A1Validator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSemester(Semester semester, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(semester, diagnostics, context);
+		if (!validate_NoCircularContainment(semester, diagnostics, context)) return false;
+		boolean result = validate_EveryMultiplicityConforms(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(semester, diagnostics, context);
+		if (result || diagnostics != null) result &= validateSemester_specialisationContainedInProgramme(semester, diagnostics, context);
+		return result;
+	}
+
+	/**
+	 * The cached validation expression for the specialisationContainedInProgramme constraint of '<em>Semester</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String SEMESTER__SPECIALISATION_CONTAINED_IN_PROGRAMME__EEXPRESSION = "self.specialiseIn = null or self.specialiseIn.eContainer() = self.eContainer().programme";
+
+	/**
+	 * Validates the specialisationContainedInProgramme constraint of '<em>Semester</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateSemester_specialisationContainedInProgramme(Semester semester, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return
+			validate
+				(A1Package.Literals.SEMESTER,
+				 semester,
+				 diagnostics,
+				 context,
+				 "http://www.eclipse.org/acceleo/query/1.0",
+				 "specialisationContainedInProgramme",
+				 SEMESTER__SPECIALISATION_CONTAINED_IN_PROGRAMME__EEXPRESSION,
+				 Diagnostic.ERROR,
+				 DIAGNOSTIC_SOURCE,
+				 0);
 	}
 
 	/**
@@ -166,8 +205,17 @@ public class A1Validator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(courseCombination, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(courseCombination, diagnostics, context);
 		if (result || diagnostics != null) result &= validateCourseCombination_needsEnoughCredits(courseCombination, diagnostics, context);
+		if (result || diagnostics != null) result &= validateCourseCombination_courseLevelCombination(courseCombination, diagnostics, context);
 		return result;
 	}
+
+	/**
+	 * The cached validation expression for the needsEnoughCredits constraint of '<em>Course Combination</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected static final String COURSE_COMBINATION__NEEDS_ENOUGH_CREDITS__EEXPRESSION = "self.credits->sum() > 30.0";
 
 	/**
 	 * Validates the needsEnoughCredits constraint of '<em>Course Combination</em>'.
@@ -176,7 +224,6 @@ public class A1Validator extends EObjectValidator {
 	 * @generated NOT
 	 */
 	public boolean validateCourseCombination_needsEnoughCredits(CourseCombination courseCombination, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		// TODO implement the constraint
 		// -> specify the condition that violates the constraint
 		// -> verify the diagnostic details, including severity, code, and message
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -192,6 +239,56 @@ public class A1Validator extends EObjectValidator {
 						 new Object[] { courseCombination },
 						 context));
 			} 
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Validates the courseLevelCombination constraint of '<em>Course Combination</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean validateCourseCombination_courseLevelCombination(CourseCombination courseCombination, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		// If the semester is at master level,
+		// Check that no more than 22.5 credits are from lower level courses.
+		// -> specify the condition that violates the constraint
+		// -> verify the diagnostic details, including severity, code, and message
+		// Ensure that you remove @generated or mark it @generated NOT
+		float sumBachelorCredits = 0.0f;
+		
+		for (Course course : courseCombination.getCourses()) {
+			if (course.getLevel() <= 3 ) {
+				sumBachelorCredits += course.getCredits();
+			}
+		}
+		
+		boolean masterLevel = false;
+		int years = courseCombination.getSemester().getStudent().getProgramme().getYears();
+		int semesterNumber = courseCombination.getSemester().getNumber();
+		// Given that master is the last two years (i.e 4 semesters) of any programme:
+		// Check that this semester is a master level semester.
+		if (semesterNumber >= years*2 - 4) {
+			masterLevel = true;
+		}
+		if (! masterLevel) {
+			// This constraint is "disabled"
+			return false;
+		}
+				
+		if (sumBachelorCredits > 22.5f) {
+			if (diagnostics != null) {
+				diagnostics.add
+					(createDiagnostic
+						(Diagnostic.ERROR,
+						 DIAGNOSTIC_SOURCE,
+						 0,
+						 "_UI_GenericConstraint_diagnostic",
+						 new Object[] { "courseLevelCombination", getObjectLabel(courseCombination, context) },
+						 new Object[] { courseCombination },
+						 context));
+			}
 			return false;
 		}
 		return true;

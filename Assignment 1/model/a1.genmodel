@@ -22,6 +22,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute a1.ecore#//Semester/number"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference a1.ecore#//Semester/courseCombination"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference a1.ecore#//Semester/specialiseIn"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference a1.ecore#//Semester/student"/>
     </genClasses>
     <genClasses ecoreClass="a1.ecore#//Specialisation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute a1.ecore#//Specialisation/name"/>

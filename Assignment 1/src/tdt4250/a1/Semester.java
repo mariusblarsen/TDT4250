@@ -16,10 +16,12 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link tdt4250.a1.Semester#getNumber <em>Number</em>}</li>
  *   <li>{@link tdt4250.a1.Semester#getCourseCombination <em>Course Combination</em>}</li>
  *   <li>{@link tdt4250.a1.Semester#getSpecialiseIn <em>Specialise In</em>}</li>
+ *   <li>{@link tdt4250.a1.Semester#getStudent <em>Student</em>}</li>
  * </ul>
  *
  * @see tdt4250.a1.A1Package#getSemester()
- * @model
+ * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='specialisationContainedInProgramme'"
+ *        annotation="http://www.eclipse.org/acceleo/query/1.0 specialisationContainedInProgramme='self.specialiseIn = null or self.specialiseIn.eContainer() = self.eContainer().programme'"
  * @generated
  */
 public interface Semester extends EObject {
@@ -90,5 +92,29 @@ public interface Semester extends EObject {
 	 * @generated
 	 */
 	void setSpecialiseIn(Specialisation value);
+
+	/**
+	 * Returns the value of the '<em><b>Student</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link tdt4250.a1.Student#getSemesters <em>Semesters</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Student</em>' container reference.
+	 * @see #setStudent(Student)
+	 * @see tdt4250.a1.A1Package#getSemester_Student()
+	 * @see tdt4250.a1.Student#getSemesters
+	 * @model opposite="semesters" required="true" transient="false"
+	 * @generated
+	 */
+	Student getStudent();
+
+	/**
+	 * Sets the value of the '{@link tdt4250.a1.Semester#getStudent <em>Student</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Student</em>' container reference.
+	 * @see #getStudent()
+	 * @generated
+	 */
+	void setStudent(Student value);
 
 } // Semester

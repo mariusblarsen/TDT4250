@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see tdt4250.a1.A1Factory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore validationDelegates='http://www.eclipse.org/acceleo/query/1.0'"
  * @generated
  */
 public interface A1Package extends EPackage {
@@ -213,13 +214,22 @@ public interface A1Package extends EPackage {
 	int SEMESTER__SPECIALISE_IN = 2;
 
 	/**
+	 * The feature id for the '<em><b>Student</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SEMESTER__STUDENT = 3;
+
+	/**
 	 * The number of structural features of the '<em>Semester</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMESTER_FEATURE_COUNT = 3;
+	int SEMESTER_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Semester</em>' class.
@@ -583,6 +593,17 @@ public interface A1Package extends EPackage {
 	EReference getSemester_SpecialiseIn();
 
 	/**
+	 * Returns the meta object for the container reference '{@link tdt4250.a1.Semester#getStudent <em>Student</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Student</em>'.
+	 * @see tdt4250.a1.Semester#getStudent()
+	 * @see #getSemester()
+	 * @generated
+	 */
+	EReference getSemester_Student();
+
+	/**
 	 * Returns the meta object for class '{@link tdt4250.a1.Specialisation <em>Specialisation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -875,6 +896,14 @@ public interface A1Package extends EPackage {
 		 * @generated
 		 */
 		EReference SEMESTER__SPECIALISE_IN = eINSTANCE.getSemester_SpecialiseIn();
+
+		/**
+		 * The meta object literal for the '<em><b>Student</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SEMESTER__STUDENT = eINSTANCE.getSemester_Student();
 
 		/**
 		 * The meta object literal for the '{@link tdt4250.a1.impl.SpecialisationImpl <em>Specialisation</em>}' class.

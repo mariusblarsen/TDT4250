@@ -73,12 +73,12 @@ public interface Course extends EObject {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Level</em>' attribute.
-	 * @see #setLevel(String)
+	 * @see #setLevel(int)
 	 * @see tdt4250.a1.A1Package#getCourse_Level()
 	 * @model
 	 * @generated
 	 */
-	String getLevel();
+	int getLevel();
 
 	/**
 	 * Sets the value of the '{@link tdt4250.a1.Course#getLevel <em>Level</em>}' attribute.
@@ -88,7 +88,7 @@ public interface Course extends EObject {
 	 * @see #getLevel()
 	 * @generated
 	 */
-	void setLevel(String value);
+	void setLevel(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Credits</b></em>' attribute.

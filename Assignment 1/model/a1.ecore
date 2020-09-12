@@ -8,7 +8,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Course">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="level" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Programme">
@@ -28,6 +28,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="courseCombination" lowerBound="1"
         eType="#//CourseCombination" containment="true" eOpposite="#//CourseCombination/semester"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="specialiseIn" eType="#//Specialisation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" lowerBound="1"
+        eType="#//Student" eOpposite="#//Student/semesters"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Specialisation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -36,17 +38,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="programme" eType="#//Programme"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="studentID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="semesters" upperBound="-1"
-        eType="#//Semester" containment="true"/>
+        eType="#//Semester" containment="true" eOpposite="#//Semester/student"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CourseCombination">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="needsEnoughCredits"/>
-    </eAnnotations>
-    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-      <details key="constraints" value="courseLevelCombination"/>
+      <details key="constraints" value="needsEnoughCredits courseLevelCombination"/>
     </eAnnotations>
     <eAnnotations source="http://www.eclipse.org/acceleo/query/1.0">
-      <details key="courseLevelCombination" value="self.credits->sum() > 30.0"/>
+      <details key="needsEnoughCredits" value="self.credits->sum() > 30.0"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"
         changeable="false" volatile="true" transient="true" derived="true"/>
