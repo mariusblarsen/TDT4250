@@ -4,10 +4,10 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:a1="platform:/plugin/tdt4250.assignment_1/model/a1.ecore"
-    xsi:schemaLocation="platform:/plugin/tdt4250.assignment_1/model/a1.ecore a1.ecore"
+    xsi:schemaLocation="platform:/plugin/tdt4250.assignment_1/model/a1.ecore ../../../../model/a1.ecore"
     name="IDI">
   <students
-      programme="//@programmes.0"
+      programme="//@programmes.1"
       studentID="123">
     <semesters
         number="1">
