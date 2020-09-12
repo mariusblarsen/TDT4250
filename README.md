@@ -15,7 +15,7 @@ Repository for the course TDT4250 - Advanced Software Design at NTNU.
   - [x] Credits
   - [ ] Combination of courses with respect to level
 - [x] Implement derived features
-- [ ] Implement OCL constraint
+- [x] Implement OCL constraint
 
 ## Structure
 
@@ -34,6 +34,15 @@ Repository for the course TDT4250 - Advanced Software Design at NTNU.
 
 * `validateCourseCombination_needsEnoughCredits()`
   * Implemented in `src > tdt4250.a1.util > A1Validator.java` to validate that each semester has a combination of courses that sums up to at least 30.0 credits.
+
+### Constraints with OCL
+
+* Class `Semester` 
+  * Constraint `specialisationContainedInProgramme` to control specialisation is chosen from the students programme.
+* Class `CourseCombination`
+  * Constraint `needsEnoughCredits`, same functionality as `validateCourseCombination_needsEnoughCredits()`.
+
+
 
 
 
