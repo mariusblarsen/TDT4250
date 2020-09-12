@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<a1:Department
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:a1="platform:/plugin/tdt4250.assignment_1/model/a1.ecore"
+    xsi:schemaLocation="platform:/plugin/tdt4250.assignment_1/model/a1.ecore a1.ecore">
+  <students
+      programme="//@programmes.1"
+      studentID="2">
+    <semesters/>
+  </students>
+  <students
+      programme="//@programmes.1"
+      studentID="1">
+    <semesters/>
+    <semesters/>
+  </students>
+  <students
+      programme="//@programmes.0"
+      studentID="3">
+    <semesters/>
+    <semesters/>
+  </students>
+  <courses/>
+  <courses/>
+  <programmes
+      years="2"
+      name="MIDT">
+    <specialisation/>
+  </programmes>
+  <programmes
+      years="5"
+      name="MDTD">
+    <specialisation/>
+  </programmes>
+</a1:Department>
