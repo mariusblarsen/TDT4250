@@ -18,6 +18,12 @@
         eType="#//Specialisation" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Semester">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="specialisationContainedInProgramme"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/acceleo/query/1.0">
+      <details key="specialisationContainedInProgramme" value="self.specialiseIn = null or self.specialiseIn.eContainer() = self.eContainer().programme"/>
+    </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="courseCombination" lowerBound="1"
         eType="#//CourseCombination" containment="true" eOpposite="#//CourseCombination/semester"/>
