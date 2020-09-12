@@ -10,7 +10,7 @@ Repository for the course TDT4250 - Advanced Software Design at NTNU.
 
 ### Classes, attributes and references
 
-
+![A1_figure](/figures/A1_plantuml.png)
 
 ### Derived features
 
