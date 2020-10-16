@@ -45,3 +45,26 @@ Attributes and references as shown in figure above. Department functions as root
 
 
 
+# Assignment 2
+
+## Run generation
+
+1. Clone repo
+2. From Eclipse: file > Open projects from File system...
+3. Navigate to the cloned repo, and select the folder "TDT4250"
+4. Import Assignment 1 and 2 as project
+5. run Assigment 2/no.tdt4250.acceleo/src/.../main/generate.mtl as Acceleo Application with configuration settings:
+   * Project: no.tdt4250.acceleo
+   * Main class: no.tdt4250.acceleo.main.Generate
+   * Model: /tdt4250.assignment_1/src/tdt4250/a1/main/Department_v2.0.xmi
+   * Target: /no.tdt4250.acceleo/src/no/tdt4250/acceleo/target
+   * Select configuration runner: Acceleo Plug-in Application
+
+6. The new generated .html is now under folder 'target'
+
+## Structure
+
+* [generate.mtl](https://github.com/mariusblarsen/TDT4250/blob/master/Assignment%202/no.tdt4250.acceleo/src/no/tdt4250/acceleo/main/generate.mtl) file found in `TDT4250/Assignment 2/no.tdt4250.acceleo/src/no/tdt4250/acceleo/main/`.
+* [.html](https://github.com/mariusblarsen/TDT4250/blob/master/Assignment%202/no.tdt4250.acceleo/src/no/tdt4250/acceleo/IDI.html) file found in `TDT4250/Assignment 2/no.tdt4250.acceleo/src/no/tdt4250/acceleo/`.
+* The instance that is used to generate the .html is found in [this foler](https://github.com/mariusblarsen/TDT4250/tree/master/Assignment%201/src/tdt4250/a1/main). The instance is based on the [model](https://github.com/mariusblarsen/TDT4250/blob/master/Assignment%201/model/a1.ecore) found in `TDT4250/Assignment 1/model/`
+
