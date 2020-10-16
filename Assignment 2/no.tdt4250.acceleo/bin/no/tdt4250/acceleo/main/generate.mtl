@@ -1,0 +1,58 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/2002/Ecore', 'platform:/resource/tdt4250.assignment_1/model/a1.ecore')]
+
+
+[template public generateElement(dep : Department)]
+[comment @main/]
+[file (dep.name.concat('.html'), false, 'UTF-8')]
+<html>
+	<head>
+		<title>Studyplan for [dep.name/]</title>
+		<meta charset="utf-8"/>
+	</head>
+	<body>
+		<div>
+			<h1>Programmes for [dep.name/]</h1>
+			[for (student : Student | dep.students)]
+				<h2>[student.programme.name/] - [student.programme.years/] years programme</h2>
+				[for (semester : Semester | student.semesters)]
+					[generateSemesters(semester)/]
+				[/for]
+				[generateSpecialisations(student.programme) /]
+			[/for]
+		</div>
+</body>
+</html>
+[/file]
+[/template]
+
+[template public generateSemesters(semester : Semester)]
+	<h3>Courses for [semester.number /]. semester :<h3>
+		[generateCourses(semester.courseCombination)/]
+[/template]
+
+[template public generateCourses( cc : CourseCombination)]
+	<table style="width:100%">
+			<tr>
+				<th>Kode</th>
+				<th>Navn</th>
+				<th>SP</th>
+			</tr>
+		[for (course : Course | cc.courses)]
+			<tr>
+				<td>[course.code/]</td>
+				<td>[course.name /]</td>
+				<td>[course.credits/]</td>
+			</tr>
+		[/for]
+	</table>
+[/template]
+
+[template public generateSpecialisations(programme : Programme)]
+	<h3>Specialisations for [programme.name /]:</h3>
+	<ul>
+		[for (spec : Specialisation | programme.specialisations )]
+			<li>[spec.name/]</li>
+		[/for]
+	</ul>
+[/template]
