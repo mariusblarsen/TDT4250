@@ -32,11 +32,13 @@
     </semesters>
     <semesters
         number="5">
-      <courseCombination/>
+      <courseCombination
+          courses="//@courses.18 //@courses.19"/>
     </semesters>
     <semesters
         number="6">
-      <courseCombination/>
+      <courseCombination
+          courses="//@courses.20 //@courses.21"/>
     </semesters>
     <semesters
         number="7">
@@ -45,15 +47,18 @@
     </semesters>
     <semesters
         number="8">
-      <courseCombination/>
+      <courseCombination
+          courses="//@courses.22 //@courses.23"/>
     </semesters>
     <semesters
         number="9">
-      <courseCombination/>
+      <courseCombination
+          courses="//@courses.24"/>
     </semesters>
     <semesters
         number="10">
-      <courseCombination/>
+      <courseCombination
+          courses="//@courses.25"/>
     </semesters>
   </students>
   <students
@@ -63,12 +68,22 @@
         number="1"
         specialiseIn="//@programmes.1/@specialisations.0">
       <courseCombination
-          courses="//@courses.0 //@courses.2"/>
+          courses="//@courses.0 //@courses.18 //@courses.19"/>
     </semesters>
     <semesters
         number="2">
       <courseCombination
-          courses="//@courses.1"/>
+          courses="//@courses.21 //@courses.22"/>
+    </semesters>
+    <semesters
+        number="3">
+      <courseCombination
+          courses="//@courses.24"/>
+    </semesters>
+    <semesters
+        number="4">
+      <courseCombination
+          courses="//@courses.25"/>
     </semesters>
   </students>
   <courses code="TDT4250"
@@ -127,7 +142,31 @@
   <courses code="TTM4100"
       name="Kommunikasjon - Tjenester og nett"
       credits="7.5"/>
-  <courses credits="7.5"/>
+  <courses code="TDT4136"
+      name="Introduksjon til kunstig intelligens"
+      credits="7.5"/>
+  <courses code="TDT4175"
+      name="Informasjonssystemer"
+      credits="7.5"/>
+  <courses code="TDT4186"
+      name="Operativsystemer"
+      credits="7.5"/>
+  <courses code="TDT4240"
+      name="Programvarearkitektur"
+      credits="7.5"/>
+  <courses code="TDT4242"
+      name="Avansert programvareutvikling"
+      credits="7.5"/>
+  <courses code="TDT4237"
+      name="Programvaresikkerhet"
+      credits="7.5"/>
+  <courses code="TDT4501"
+      name="Datateknologi, fordypningsemne"
+      credits="7.5"/>
+  <courses code="TDT4900"
+      name="Datateknologi, masteroppgave"
+      level="5"
+      credits="30.0"/>
   <programmes
       years="5"
       name="MDTD">
@@ -150,6 +189,12 @@
       years="2"
       name="MIDT">
     <specialisations
-        name="Databases"/>
+        name="Databaser og søk"/>
+    <specialisations
+        name="Programvaresystemer"/>
+    <specialisations
+        name="Kunstig intelligens"/>
+    <specialisations
+        name="Algoritmer og datamaskiner"/>
   </programmes>
 </a1:Department>
